@@ -40,10 +40,6 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
-    public function username()
-    {
-        return 'user_name';
-    }
 
     protected function redirectTo()
     {

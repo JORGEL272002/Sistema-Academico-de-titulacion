@@ -188,6 +188,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'user_name' => 'Nombre de usuario',
+        'email' => 'Correo electrónico',
+        'password' => 'Contraseña',
+        'g-recaptcha-response' => 'Captcha',
+    ],
 
 ];

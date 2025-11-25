@@ -34,6 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'signed'             => \Illuminate\Routing\Middleware\ValidateSignature::class,
             'throttle'           => \Illuminate\Routing\Middleware\ThrottleRequests::class,
             'verified'           => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+            'Captcha'            => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

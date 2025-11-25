@@ -17,6 +17,12 @@
                 <span id="errorMessage">{{ $message }}</span>
             </div>
         @enderror
+        @error('g-recaptcha-response')
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <span id="errorMessage">{{ $message }}</span>
+            </div>
+        @enderror
 
         <div class="form-group">
             <i class="fas fa-envelope input-icon"></i>
@@ -28,6 +34,11 @@
             <i class="fas fa-lock input-icon"></i>
             <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
             <i class="fas fa-eye password-toggle" onclick="mostrarContrasena()"></i>
+        </div>
+
+        <div class="form-group">
+            {!! NoCaptcha::renderJs() !!}
+            {!! NoCaptcha::display() !!}
         </div>
 
         <div class="form-check">

@@ -135,8 +135,8 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right mt-3">
-                                <button type="submit" class="btn btn-primary">Actualizar</button>
                                 <a href="{{ route('roles.index') }}" class="btn btn-danger">Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
                             </div>
                         </form>
                     </div>

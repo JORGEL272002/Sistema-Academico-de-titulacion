@@ -28,7 +28,8 @@
                             <select class="form-control" name="per_id" id="per_id">
                                 @if (!empty($docente->per_id))
                                     <option value="{{ $docente->per_id }}" selected>
-                                        (C.I. {{ $docente->persona->carnet }}) {{ $docente->persona->nombres }} {{ $docente->persona->apellidopat }} {{ $docente->persona->apellidomat }}
+                                        (C.I. {{ $docente->persona->carnet }}) {{ $docente->persona->nombres }}
+                                        {{ $docente->persona->apellidopat }} {{ $docente->persona->apellidomat }}
                                     </option>
                                 @endif
                             </select>
@@ -68,10 +69,10 @@
                 </div>
 
                 <div class="modal-footer no-bd mt-3">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">
                         Actualizar
                     </button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </form>
         </div>

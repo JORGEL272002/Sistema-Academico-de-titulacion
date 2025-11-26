@@ -101,10 +101,10 @@
                 </div>
 
                 <div class="modal-footer no-bd mt-3">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                     <button type="submit" class="btn btn-primary">
                         Actualizar
                     </button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </form>
         </div>

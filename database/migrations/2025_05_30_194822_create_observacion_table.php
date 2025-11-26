@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('observacion', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_estudiante')->constrained('estudiante')->onDelete('cascade');
+            $table->foreignId('id_estudiante')->constrained('users')->onDelete('cascade');
             $table->string('contenido');
             $table->string('autor');
             $table->date('fecha')->nullable();

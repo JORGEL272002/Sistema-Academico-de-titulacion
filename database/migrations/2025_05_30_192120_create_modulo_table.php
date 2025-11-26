@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nombre');
-            $table->foreignId('id_docente')->constrained('docente')->onDelete('cascade');
+            $table->foreignId('id_docente')->constrained('users')->onDelete('cascade');
             $table->foreignId('id_metodologia')->constrained('metodologia')->onDelete('cascade');
             $table->string('duracion');
             $table->string('descripcion')->nullable();

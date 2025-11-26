@@ -37,7 +37,7 @@ $(document).ready(function () {
                 backgroundColor: ["#1d7af3", "#f3545d", "#fdaf4b"],
                 borderWidth: 0
             }],
-            labels: ['Estudiantes', 'Protectos', 'Entregas']
+            labels: ['Estudiantes', 'Avances', 'Entregas']
         },
         options: {
             responsive: true,

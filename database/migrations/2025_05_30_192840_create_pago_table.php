@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pago', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_estudiante')->constrained('estudiante')->onDelete('cascade');
+            $table->foreignId('id_estudiante')->constrained('users')->onDelete('cascade');
             $table->decimal('monto');
             $table->enum('metodo', ['efectivo', 'qr', 'transferencia_bancaria'])->default('efectivo');
             $table->text('comprobante')->nullable();

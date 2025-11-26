@@ -2,7 +2,7 @@
     <div class="container-fluid text-center">
         <div class="copyright">
             {{ date('Y') }} &copy; Powered by
-            <a href="https://yoadministro.com" target="_blank" rel="noopener">YoAdministro</a>
+            <a href="#" rel="noopener">CTRL-V | CTRL-C</a>
             - v{{ config('app.version') }}
         </div>
     </div>

@@ -47,13 +47,16 @@ Route::middleware(['atlantis_menu', 'set_session_data', 'check_user_login', 'aut
     Route::prefix('registros')->group(function () {
         // Plantel Administrativo
         Route::get('plantel-administrativo', [PlantelAdministrativoController::class, 'index'])->name('plantel-administrativo.index');
+        Route::post('get-plantel', [PlantelAdministrativoController::class, 'getPlantelAdministrativoData']);
         // Docente
         Route::get('docentes', [DocenteController::class, 'index'])->name('docentes.index');
+         Route::get('get-docentes', [DocenteController::class, 'getDocentesData']);
         // Programa Academico
         Route::resource('programa-academico', ProgramaAcademicoController::class);
         Route::get('get-programa-academico', [ProgramaAcademicoController::class, 'getProgramaAcademicoData']);
         // Estudiante
         Route::get('estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
+        Route::get('get-estudiantes', [EstudianteController::class, 'getEstudiantesData']);
         // Proyecto
         Route::resource('proyectos', ProyectoController::class);
         Route::get('proyecto-revision/{id}', [ProyectoController::class, 'revision'])->name('proyecto.revision');

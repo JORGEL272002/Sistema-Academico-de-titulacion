@@ -8,7 +8,8 @@ $(document).ready(function () {
         },
         columns: [
             { data: "carnet" },
-            { data: "full_name" }
+            { data: "full_name" },
+            { data: "created_at" }
         ],
     });
 });

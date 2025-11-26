@@ -96,52 +96,52 @@ return [
             ],
 
             [
-                'route' => 'programa-academico.index',
-                'title' => 'Programa Académico',
-                'permission' => 'programa_academico.index',
-            ],
-
-            [
                 'route' => 'estudiantes.index',
                 'title' => 'Estudiantes',
                 'permission' => 'estudiante.index',
             ],
 
             [
+                'route' => 'programa-academico.index',
+                'title' => 'Programa Académico',
+                'permission' => 'programa_academico.index',
+            ],
+
+            [
                 'route' => 'proyectos.index',
-                'title' => 'Proyectos',
+                'title' => 'Avance Estudiante',
                 'permission' => 'proyecto.index',
             ],
 
-            [
-                'route' => 'metodologias.index',
-                'title' => 'Metodologías',
-                'permission' => 'metodologia.index',
-            ],
+            // [
+            //     'route' => 'metodologias.index',
+            //     'title' => 'Metodologías',
+            //     'permission' => 'metodologia.index',
+            // ],
 
-            [
-                'route' => 'modulos.index',
-                'title' => 'Modulo',
-                'permission' => 'modulo.index',
-            ],
+            // [
+            //     'route' => 'modulos.index',
+            //     'title' => 'Modulo',
+            //     'permission' => 'modulo.index',
+            // ],
 
-            [
-                'route' => 'pagos.index',
-                'title' => 'Pagos',
-                'permission' => 'pago.index',
-            ],
+            // [
+            //     'route' => 'pagos.index',
+            //     'title' => 'Pagos',
+            //     'permission' => 'pago.index',
+            // ],
 
-            [
-                'route' => 'talleres.index',
-                'title' => 'Talleres',
-                'permission' => 'taller.index',
-            ],
+            // [
+            //     'route' => 'talleres.index',
+            //     'title' => 'Talleres',
+            //     'permission' => 'taller.index',
+            // ],
 
-            [
-                'route' => 'avance-estudiante.index',
-                'title' => 'Avance Estudiante',
-                'permission' => 'avance-estudiante.index',
-            ],
+            // [
+            //     'route' => 'avance-estudiante.index',
+            //     'title' => 'Avance Estudiante',
+            //     'permission' => 'avance-estudiante.index',
+            // ],
 
         ],
 

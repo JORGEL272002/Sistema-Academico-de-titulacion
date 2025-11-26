@@ -19,6 +19,7 @@
                                     <tr>
                                         <th>C.I</th>
                                         <th>Nombre Completo</th>
+                                        <th>Fecha de registro</th>
                                     </tr>
                                 </thead>
                             </table>

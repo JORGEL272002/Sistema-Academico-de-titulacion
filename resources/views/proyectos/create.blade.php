@@ -6,7 +6,7 @@
                     Nuevo
                 </span>
                 <span class="fw-light">
-                    Proyecto
+                    Avance Estudiante
                 </span>
             </h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
@@ -58,14 +58,6 @@
                             <label form="linea_investigacion">Linea de Investigación</label>
                             <input name="linea_investigacion" type="text" class="form-control"
                                 id="linea_investigacion" placeholder="Ingrese linea de investigación">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group form-group-default required">
-                            <label form="area_conocimiento">Area de Conocimiento</label>
-                            <input name="area_conocimiento" type="text" class="form-control" id="area_conocimiento"
-                                placeholder="Ingrese area de conocimiento">
                         </div>
                     </div>
                 </div>

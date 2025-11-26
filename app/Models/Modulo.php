@@ -12,7 +12,7 @@ class Modulo extends Model
 
     public function docente()
     {
-        return $this->belongsTo(Docente::class, 'id_docente');
+        return $this->belongsTo(User::class, 'id_docente');
     }
 
     public function metodologia()

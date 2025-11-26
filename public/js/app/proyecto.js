@@ -12,7 +12,6 @@ $(document).ready(function () {
             { data: "estudiante" },
             { data: "titulo" },
             { data: "linea_investigacion" },
-            { data: "area_conocimiento" },
             { data: "action", orderable: false, searchable: false },
         ],
     });
@@ -54,7 +53,7 @@ $(document).ready(function () {
                         params.page = params.page || 1;
                         const formatted = data.data.map((item) => ({
                             id: item.id,
-                            text: `(C.I. ${item.persona.carnet}) ${item.persona.nombres} ${item.persona.apellidopat} ${item.persona.apellidomat}`,
+                            text: `(C.I. ${item.carnet}) ${item.nombres} ${item.apellidos}`,
                         }));
                         return {
                             results: formatted,
@@ -100,7 +99,7 @@ $(document).ready(function () {
                         params.page = params.page || 1;
                         const formatted = data.data.map((item) => ({
                             id: item.id,
-                            text: `(C.I. ${item.persona.carnet}) ${item.persona.nombres} ${item.persona.apellidopat} ${item.persona.apellidomat}`,
+                            text: `(C.I. ${item.carnet}) ${item.nombres} ${item.apellidos}`,
                         }));
                         return {
                             results: formatted,
@@ -146,7 +145,7 @@ $(document).ready(function () {
                         params.page = params.page || 1;
                         const formatted = data.data.map((item) => ({
                             id: item.id,
-                            text: `(C.I. ${item.persona.carnet}) ${item.persona.nombres} ${item.persona.apellidopat} ${item.persona.apellidomat}`,
+                            text: `(C.I. ${item.carnet}) ${item.nombres} ${item.apellidos}`,
                         }));
                         return {
                             results: formatted,
@@ -285,7 +284,7 @@ $(document).ready(function () {
         });
     });
 
-     $(document).on("click", "button.view_proyecto", function () {
+    $(document).on("click", "button.view_proyecto", function () {
         $("div.modal_proyecto").load($(this).data("href"), function () {
             $(this).modal("show");
         });

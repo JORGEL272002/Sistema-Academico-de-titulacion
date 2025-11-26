@@ -18,7 +18,7 @@ class ProyectoController extends Controller
             abort(403, 'Unauthorized action.');
         }
         if (request()->ajax()) {
-            $proyectos = Proyecto::with(['docenteGuia', 'docenteRevisor', 'estudiante'])->select(['id', 'id_docente_revisor', 'id_docente_guia', 'id_estudiante', 'titulo', 'linea_investigacion','area_conocimiento'])->orderBy('id', 'desc');
+            $proyectos = Proyecto::with(['docenteGuia', 'docenteRevisor', 'estudiante'])->select(['id', 'id_docente_revisor', 'id_docente_guia', 'id_estudiante', 'titulo', 'linea_investigacion'])->orderBy('id', 'desc');
             return DataTables::of($proyectos)
                 ->addColumn('action', function ($row) {
                     $editUrl = route('proyectos.edit', $row->id);
@@ -66,13 +66,13 @@ class ProyectoController extends Controller
                 })
 
                 ->addColumn('docente_guia', function ($row) {
-                    return $row->docenteGuia->persona->apellidopat . ' ' . $row->docenteGuia->persona->apellidomat . ' ' . $row->docenteGuia->persona->nombres;
+                    return $row->docenteGuia->apellidos . ' ' . $row->docenteGuia->nombres;
                 })
                 ->addColumn('docente_revisor', function ($row) {
-                    return $row->docenteRevisor->persona->apellidopat . ' ' . $row->docenteRevisor->persona->apellidomat . ' ' . $row->docenteRevisor->persona->nombres;
+                    return $row->docenteRevisor->apellidos . ' ' . $row->docenteRevisor->nombres;
                 })
                 ->addColumn('estudiante', function ($row) {
-                    return $row->estudiante->persona->apellidopat . ' ' . $row->estudiante->persona->apellidomat . ' ' . $row->estudiante->persona->nombres;
+                    return $row->estudiante->apellidos . ' ' . $row->estudiante->nombres;
                 })
                 ->removeColumn(['id'])
                 ->rawColumns(['action'])
@@ -102,10 +102,10 @@ class ProyectoController extends Controller
             abort(403, 'Unauthorized action.');
         }
         try {
-            $input = $request->only(['id_docente_guia', 'id_docente_revisor', 'id_estudiante', 'titulo', 'linea_investigacion', 'area_conocimiento']);
+            $input = $request->only(['id_docente_guia', 'id_docente_revisor', 'id_estudiante', 'titulo', 'linea_investigacion']);
             $input['titulo'] = ucfirst(strtolower($input['titulo']));
             $input['linea_investigacion'] = ucfirst(strtolower($input['linea_investigacion']));
-            $input['area_conocimiento'] = ucfirst(strtolower($input['area_conocimiento']));
+
             Proyecto::create($input);
 
             $output = [
@@ -167,7 +167,7 @@ class ProyectoController extends Controller
 
         if (request()->ajax()) {
             try {
-                $input = $request->only(['id_docente_guia', 'id_docente_revisor', 'id_estudiante', 'titulo', 'linea_investigacion', 'area_conocimiento']);
+                $input = $request->only(['id_docente_guia', 'id_docente_revisor', 'id_estudiante', 'titulo', 'linea_investigacion']);
 
                 $proyecto = Proyecto::findOrFail($id);
                 $proyecto->id_docente_guia = $input['id_docente_guia'];
@@ -175,7 +175,6 @@ class ProyectoController extends Controller
                 $proyecto->id_estudiante = $input['id_estudiante'];
                 $proyecto->titulo = ucfirst(strtolower($input['titulo']));
                 $proyecto->linea_investigacion = ucfirst(strtolower($input['linea_investigacion']));
-                $proyecto->area_conocimiento = ucfirst(strtolower($input['area_conocimiento']));
                 $proyecto->save();
 
                 $output = [

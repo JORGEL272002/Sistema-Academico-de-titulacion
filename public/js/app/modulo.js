@@ -56,7 +56,7 @@ $(document).ready(function () {
                         params.page = params.page || 1;
                         const formatted = data.data.map((item) => ({
                             id: item.id,
-                            text: `(C.I. ${item.persona.carnet}) ${item.persona.nombres} ${item.persona.apellidopat} ${item.persona.apellidomat}`,
+                            text: `(C.I. ${item.carnet}) ${item.nombres} ${item.apellidos}`,
                         }));
                         return {
                             results: formatted,

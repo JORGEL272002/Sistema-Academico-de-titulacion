@@ -41,6 +41,11 @@ class PermissionsTableSeeder extends Seeder
                 'docente.index',
             ],
 
+            // ==== ESTUDIANTE ====
+            'estudiante' => [
+                'estudiante.index',
+            ],
+
             // ==== PROGRAMA ACADÉMICO ====
             'programa_academico' => [
                 'programa_academico.index',
@@ -48,11 +53,6 @@ class PermissionsTableSeeder extends Seeder
                 'programa_academico.create',
                 'programa_academico.update',
                 'programa_academico.delete',
-            ],
-
-            // ==== ESTUDIANTE ====
-            'estudiante' => [
-                'estudiante.index',
             ],
 
             // ==== PROYECTO ====
@@ -65,51 +65,51 @@ class PermissionsTableSeeder extends Seeder
                 'proyecto.delete',
             ],
 
-            // ==== METODOLOGIA ====
-            'metodologia' => [
-                'metodologia.index',
-                'metodologia.view',
-                'metodologia.create',
-                'metodologia.update',
-                'metodologia.delete',
-            ],
+            // // ==== METODOLOGIA ====
+            // 'metodologia' => [
+            //     'metodologia.index',
+            //     'metodologia.view',
+            //     'metodologia.create',
+            //     'metodologia.update',
+            //     'metodologia.delete',
+            // ],
 
 
-            // ==== MODULO ====
-            'modulo' => [
-                'modulo.index',
-                'modulo.view',
-                'modulo.create',
-                'modulo.update',
-                'modulo.delete',
-            ],
+            // // ==== MODULO ====
+            // 'modulo' => [
+            //     'modulo.index',
+            //     'modulo.view',
+            //     'modulo.create',
+            //     'modulo.update',
+            //     'modulo.delete',
+            // ],
 
-            // ==== PAGO ====
-            'pago' => [
-                'pago.index',
-                'pago.view',
-                'pago.create',
-                'pago.update',
-                'pago.delete',
-            ],
+            // // ==== PAGO ====
+            // 'pago' => [
+            //     'pago.index',
+            //     'pago.view',
+            //     'pago.create',
+            //     'pago.update',
+            //     'pago.delete',
+            // ],
 
-            // ==== TALLER ====
-            'taller' => [
-                'taller.index',
-                'taller.view',
-                'taller.create',
-                'taller.update',
-                'taller.delete',
-            ],
+            // // ==== TALLER ====
+            // 'taller' => [
+            //     'taller.index',
+            //     'taller.view',
+            //     'taller.create',
+            //     'taller.update',
+            //     'taller.delete',
+            // ],
 
-            // ==== AVANCE ESTUDIANTE ====
-            'avance_estudiante' => [
-                'avance_estudiante.index',
-                'avance_estudiante.view',
-                'avance_estudiante.create',
-                'avance_estudiante.update',
-                'avance_estudiante.delete',
-            ],
+            // // ==== AVANCE ESTUDIANTE ====
+            // 'avance_estudiante' => [
+            //     'avance_estudiante.index',
+            //     'avance_estudiante.view',
+            //     'avance_estudiante.create',
+            //     'avance_estudiante.update',
+            //     'avance_estudiante.delete',
+            // ],
 
         ];
 

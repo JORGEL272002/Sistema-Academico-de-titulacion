@@ -11,16 +11,16 @@ class Proyecto extends Model
 
     public function docenteGuia()
     {
-        return $this->belongsTo(Docente::class, 'id_docente_guia');
+        return $this->belongsTo(User::class, 'id_docente_guia');
     }
 
     public function docenteRevisor()
     {
-        return $this->belongsTo(Docente::class, 'id_docente_revisor');
+        return $this->belongsTo(User::class, 'id_docente_revisor');
     }
 
     public function estudiante()
     {
-        return $this->belongsTo(Estudiante::class, 'id_estudiante');
+        return $this->belongsTo(User::class, 'id_estudiante');
     }
 }

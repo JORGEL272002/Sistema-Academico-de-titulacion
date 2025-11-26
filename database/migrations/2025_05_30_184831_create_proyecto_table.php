@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('proyecto', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_docente_guia')->constrained('docente')->onDelete('cascade');
-            $table->foreignId('id_docente_revisor')->constrained('docente')->onDelete('cascade');
-            $table->foreignId('id_estudiante')->constrained('estudiante')->onDelete('cascade');
+            $table->foreignId('id_docente_guia')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_docente_revisor')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_estudiante')->constrained('users')->onDelete('cascade');
             $table->string('titulo');
             $table->string('linea_investigacion');
-            $table->string('area_conocimiento');
+            // $table->string('area_conocimiento');
             $table->string('calificacion')->nullable();
             $table->date('fecha_entrega')->nullable();
             $table->date('fecha_defensa')->nullable();

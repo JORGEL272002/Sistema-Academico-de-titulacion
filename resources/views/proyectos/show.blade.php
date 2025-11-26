@@ -6,7 +6,8 @@
                     Datos de
                 </span>
                 <span class="fw-light">
-                    Revison de Proyecto (Estudiante: {{$proyecto->estudiante->persona->nombres}} {{$proyecto->estudiante->persona->apellidopat}} {{$proyecto->estudiante->persona->apellidopat}})
+                    Revison de Avance (Estudiante: {{ $proyecto->estudiante->nombres }}
+                    {{ $proyecto->estudiante->apellidos }})
                 </span>
             </h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
@@ -29,8 +30,8 @@
                         <tbody>
                             <tr>
                                 <td>{{ $proyecto->calificacion }}</td>
-                                <td>{{ $proyecto->fecha_entrega }}</td>
-                                <td>{{ $proyecto->fecha_defensa }}</td>
+                                <td>{{ \Carbon\Carbon::parse($proyecto->fecha_entrega)->format('d/m/y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($proyecto->fecha_defensa)->format('d/m/y') }}</td>
                                 <td>{{ $proyecto->resumen }}</td>
                                 <td>{{ $proyecto->observacion }}</td>
                             </tr>

@@ -22,7 +22,6 @@
 
     <!-- Navbar Header -->
     <nav class="navbar navbar-header navbar-expand-lg" data-background-color="red2">
-
         <div class="container-fluid">
             <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                 <li class="nav-item toggle-nav-search hidden-caret">
@@ -57,64 +56,10 @@
                             </div>
                         </li>
                         <li>
-                            <a class="see-all" href="javascript:void(0);">See all notifications<i
+                            <a class="see-all" href="javascript:void(0);">Todos Notificaciones<i
                                     class="fa fa-angle-right"></i> </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown hidden-caret">
-                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fas fa-layer-group"></i>
-                    </a>
-                    <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
-                        <div class="quick-actions-header">
-                            <span class="title mb-1">Acciones rápidas</span>
-                        </div>
-                        {{-- <div class="quick-actions-scroll scrollbar-outer">
-                            <div class="quick-actions-items">
-                                <div class="row m-0">
-                                    <a class="col-6 col-md-4 p-0" href="{{ route('uduarios.index') }}">
-                                        <div class="quick-actions-item">
-                                            <i class="flaticon-add-user"></i>
-                                            <span class="text">Usuarios</span>
-                                        </div>
-                                    </a>
-                                    <a class="col-6 col-md-4 p-0" href="{{ route('estudiante.index') }}">
-                                        <div class="quick-actions-item">
-                                            <i class="flaticon-list"></i>
-                                            <span class="text">Alumnos</span>
-                                        </div>
-                                    </a>
-                                    <a class="col-6 col-md-4 p-0" href="{{ route('docente.index') }}">
-                                        <div class="quick-actions-item">
-                                            <i class="flaticon-pen"></i>
-                                            <span class="text">Docentes</span>
-                                        </div>
-                                    </a>
-                                    <a class="col-6 col-md-4 p-0" href="{{ route('academic_planning.index') }}">
-                                        <div class="quick-actions-item">
-                                            <i class="flaticon-agenda-1"></i>
-                                            <span class="text">Cursos</span>
-                                        </div>
-                                    </a>
-                                    <a class="col-6 col-md-4 p-0"
-                                        href="{{ route('avance_estudiante.index') }}">
-                                        <div class="quick-actions-item">
-                                            <i class="flaticon-clock-1"></i>
-                                            <span class="text">Marcado Docente</span>
-                                        </div>
-                                    </a>
-                                    <a class="col-6 col-md-4 p-0"
-                                        href="{{ route('entregas_avance.index') }}">
-                                        <div class="quick-actions-item">
-                                            <i class="flaticon-clock-1"></i>
-                                            <span class="text">Marcado Administrativo</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div> --}}
-                    </div>
                 </li>
                 <li class="nav-item dropdown hidden-caret">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
@@ -129,10 +74,7 @@
                             <li>
                                 <a class="dropdown-item" href="#">Mi perfil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Cerrar
-                                    Sesión</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     class="d-none">
                                     @csrf

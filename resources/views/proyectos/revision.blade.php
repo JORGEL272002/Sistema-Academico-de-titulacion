@@ -6,7 +6,7 @@
                     Revison de
                 </span>
                 <span class="fw-light">
-                    Proyecto (Estudiante: {{$proyecto->estudiante->persona->nombres}} {{$proyecto->estudiante->persona->apellidopat}} {{$proyecto->estudiante->persona->apellidopat}})
+                    Avance (Estudiante: {{ $proyecto->estudiante->nombres }} {{ $proyecto->estudiante->apellidos }})
                 </span>
             </h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
@@ -25,21 +25,23 @@
                         <div class="form-group form-group-default required">
                             <label for="calificacion">Calificación</label>
                             <input name="calificacion" type="text" class="form-control" id="calificacion"
-                                placeholder="Ingrese calificacion" value="{{$proyecto->calificacion}}">
+                                placeholder="Ingrese calificacion" value="{{ $proyecto->calificacion }}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group form-group-default required">
                             <label form="fecha_entrega">Fecha de Entrega</label>
-                            <input name="fecha_entrega" type="date" class="form-control" id="fecha_entrega" value="{{$proyecto->fecha_entrega}}">
+                            <input name="fecha_entrega" type="date" class="form-control" id="fecha_entrega"
+                                value="{{ $proyecto->fecha_entrega }}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group form-group-default">
                             <label form="fecha_defensa">Fecha de Defensa</label>
-                            <input name="fecha_defensa" type="date" class="form-control" id="fecha_defensa" value="{{$proyecto->fecha_defensa}}">
+                            <input name="fecha_defensa" type="date" class="form-control" id="fecha_defensa"
+                                value="{{ $proyecto->fecha_defensa }}">
                         </div>
                     </div>
                 </div>
@@ -49,23 +51,23 @@
                         <div class="form-group form-group-default">
                             <label form="resumen">Resumen</label>
                             <textarea name="resumen" id="resumen" class="form-control" cols="30" rows="5"
-                                placeholder="Ingrese resumen...">{{$proyecto->resumen}}</textarea>
+                                placeholder="Ingrese resumen...">{{ $proyecto->resumen }}</textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-default">
                             <label form="observacion">Observación</label>
                             <textarea name="observacion" id="observacion" class="form-control" cols="30" rows="5"
-                                placeholder="Ingrese observacion...">{{$proyecto->resumen}}</textarea>
+                                placeholder="Ingrese observacion...">{{ $proyecto->resumen }}</textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer no-bd mt-3">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">
                         Actualizar
                     </button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </form>
         </div>

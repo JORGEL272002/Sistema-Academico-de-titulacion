@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class DocenteController extends Controller
@@ -16,15 +17,34 @@ class DocenteController extends Controller
             abort(403, 'Unauthorized action.');
         }
         if (request()->ajax()) {
-            $docentes = User::select('carnet', 'nombres', 'apellidos')->where('tipo_usuario', 'docente')->orderBy('id', 'desc');
+            $docentes = User::select('carnet', 'nombres', 'apellidos', 'created_at')->where('tipo_usuario', 'docente')->orderBy('id', 'desc');
             return DataTables::of($docentes)
                 ->addColumn('full_name', function ($row) {
                     return $row->nombres . ' ' . $row->apellidos;
+                })
+                ->editColumn('created_at', function ($row) {
+                    return $row->created_at->format('d/m/Y');
                 })
                 ->removeColumn(['id'])
                 ->make(true);
         }
 
         return view('docentes.index');
+    }
+
+    public function getDocentesData(Request $request)
+    {
+        $term = $request->input('term');
+        $page = $request->input('page', 1);
+
+        $users = User::where('status', 1)->where('tipo_usuario', 'docente')
+            ->where(function ($query) use ($term) {
+                $query->where('nombres', 'LIKE', '%' . $term . '%')
+                    ->orWhere('apellidos', 'LIKE', '%' . $term . '%')
+                    ->orWhere('carnet', 'LIKE', '%' . $term . '%');
+            })
+            ->orderBy('apellidos', 'asc');
+
+        return $users->paginate(5, ['*'], 'page', $page);
     }
 }

@@ -22,9 +22,10 @@
                             <table id="users_table" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Nombre de Usuario</th>
+                                        <th>C.I.</th>
                                         <th>Nombre Completo</th>
-                                        <th>Habilitado?</th>
+                                        <th>Correo</th>
+                                        {{-- <th>Habilitado?</th> --}}
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>

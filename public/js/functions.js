@@ -85,6 +85,7 @@ function registerAjaxForm(
                 }
             } else if (
                 type === "text" ||
+                type === "email" ||
                 type === "date" ||
                 type === undefined
             ) {
@@ -134,6 +135,7 @@ function registerAjaxForm(
                 }
             },
             error: function (xhr) {
+
                 var listMsg =
                     "<strong>Corrige los siguientes campos:</strong><ul>";
                 var errors = xhr.responseJSON.errors;
@@ -202,6 +204,7 @@ function updateAjaxForm(
                         }
                     } else if (
                         type === "text" ||
+                        type === "email" ||
                         type === "date" ||
                         type === undefined
                     ) {

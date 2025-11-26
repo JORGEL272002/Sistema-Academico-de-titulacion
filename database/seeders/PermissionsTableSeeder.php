@@ -22,16 +22,6 @@ class PermissionsTableSeeder extends Seeder
                 'permiso.update',
                 'permiso.delete',
             ],
-
-            // ==== PERSONAS ====
-            'personas' => [
-                'persona.index',
-                'persona.view',
-                'persona.create',
-                'persona.update',
-                'persona.delete',
-            ],
-
             // ==== USUARIOS ====
             'usuarios' => [
                 'usuario.index',

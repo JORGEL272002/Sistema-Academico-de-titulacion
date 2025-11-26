@@ -23,10 +23,27 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group form-group-default required">
-                            <label for="per_id">Persona</label>
-                            <select class="form-control" name="per_id" id="per_id" style="width: 100%">
-                                <option value="" disabled>Seleccione</option>
-                            </select>
+                            <label>C.I</label>
+                            <input name="carnet" type="text" class="form-control input-number"
+                                placeholder="Ingrese cédula de identidad">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default required">
+                            <label>Nombres</label>
+                            <input name="nombres" type="text" class="form-control" placeholder="Ingrese nombres">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default required">
+                            <label>Apellidos</label>
+                            <input name="apellidos" type="text" class="form-control" placeholder="Ingrese apellidos">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default required">
+                            <label>Correo</label>
+                            <input name="email" type="email" class="form-control" placeholder="Ingrese correo">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -35,29 +52,41 @@
                             <select class="form-control" name="role" id="role" style="width: 100%">
                                 <option value="" disabled selected>Seleccione</option>
                                 @foreach ($roles as $key => $role)
-                                    <option value="{{$key}}">{{$role}}</option>
+                                    <option value="{{ $key }}">{{ $role }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group form-group-default required">
-                            <label>Nombre de Usuario</label>
-                            <input name="user_name" type="text" class="form-control" placeholder="Ingrese usuario">
+                            <label for="tipo_usuario">Tipo de Usuario</label>
+                            <select class="form-control" name="tipo_usuario" id="tipo_usuario" style="width: 100%">
+                                <option value="" disabled selected>Seleccione</option>
+                                @foreach ($typeUsers as $key => $typeUser)
+                                    <option value="{{ $key }}">{{ $typeUser }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-default">
-                            <label>Contraseña</label>
-                            <input type="text" class="form-control" placeholder="********" name="password">
+                            <label>Celular</label>
+                            <input name="celular" type="text" class="form-control input-number"
+                                placeholder="Ingrese celular">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="" name="status">
-                                <span class="form-check-sign">Habilitado</span>
-                            </label>
+                        <div class="form-group form-group-default">
+                            <label>Fecha de nacimiento</label>
+                            <input name="fecha_nacimiento" type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default">
+                            <label>Dirección</label>
+                            <input name="direccion" type="text" class="form-control" placeholder="Ingrese dirección">
                         </div>
                     </div>
                 </div>

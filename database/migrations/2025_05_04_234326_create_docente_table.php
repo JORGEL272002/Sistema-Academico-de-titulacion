@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('docente', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('per_id')->constrained('persona')->onDelete('cascade');
             $table->string('numero_item');
             $table->string('especialidad');
             $table->string('tipo_contrato');

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('plantel_administrativo', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('per_id')->constrained('persona')->onDelete('cascade');
             $table->string('cargo');
             $table->string('unidad');
             $table->boolean('estado')->default(0);

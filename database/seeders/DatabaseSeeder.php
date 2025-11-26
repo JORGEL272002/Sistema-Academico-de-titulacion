@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Persona;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Database\Seeder;
@@ -16,16 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PermissionsTableSeeder::class);
 
-        $persona = Persona::factory()->create([
-            'nombres' => 'SuperAdmin',
-            'apellidopat' => 'System',
-            'apellidomat' => 'Controller',
-            'carnet' => '12345678'
-        ]);
-
         $usuario = User::factory()->create([
-            'user_name' => 'Admin',
-            'per_id' => $persona->id,
+            'nombres' => 'Admin',
+            'apellidos' => 'System',
+            'carnet' => '0000000',
+            'tipo_usuario' => 'administrador',
             'status' => 1,
             'email' => 'admin@gmail.com',
             'password' => bcrypt('123456'),
@@ -39,20 +33,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $usuario->assignRole($role->name);
 
-        // $batchSize = 1000;
-        // $total = 1000;
 
-        // for ($i = 0; $i < ($total / $batchSize); $i++) {
-        //     $peopleBatch = People::factory($batchSize)->create();
-        //     foreach ($peopleBatch as $person) {
-        //         User::factory()->create([
-        //             'user_name' => fake()->unique()->userName(),
-        //             'id'    => $person->id,
-        //             'status'    => rand(0, 1),
-        //             'email'     => $person->per_nombres . '.' . $person->id . '@gmail.com',
-        //             'password'  => bcrypt('123456'),
-        //         ]);
-        //     }
-        // }
     }
 }

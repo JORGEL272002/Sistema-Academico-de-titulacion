@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\UtilHelper;
 use Yajra\DataTables\Facades\DataTables;
 
 class UsuarioController extends Controller
@@ -31,7 +32,7 @@ class UsuarioController extends Controller
             abort(403, 'Unauthorized action.');
         }
         if (request()->ajax()) {
-            $users = User::with('persona')->select(['id', 'user_name', 'per_id', 'status'])->orderBy('id', 'desc');
+            $users = User::select(['id', 'nombres', 'apellidos', 'carnet', 'email', 'status'])->orderBy('id', 'desc');
 
             return DataTables::of($users)
                 ->addColumn('action', function ($user) {
@@ -59,11 +60,8 @@ class UsuarioController extends Controller
 
                     return $buttons;
                 })
-                ->editColumn('per_id', function ($row) {
-                    if ($row->persona) {
-                        return $row->persona->nombres . ' ' . $row->persona->apellidopat . ' ' . $row->persona->apellidomat;
-                    }
-                    return '';
+                ->addColumn('full_name', function ($row) {
+                    return $row->nombres . ' ' . $row->apellidos;
                 })
 
                 ->editColumn('status', function ($row) {
@@ -86,7 +84,8 @@ class UsuarioController extends Controller
             abort(403, 'Unauthorized action.');
         }
         $roles = $this->util->getRoleData();
-        return view('usuarios.create', compact('roles'));
+        $typeUsers = UtilHelper::getTypeUsers();
+        return view('usuarios.create', compact('roles', 'typeUsers'));
     }
 
     /**
@@ -98,10 +97,9 @@ class UsuarioController extends Controller
             abort(403, 'Unauthorized action.');
         }
         try {
-            $status = $request->has('status') ? 1 : 0;
-            $input = $request->only(['per_id', 'user_name', 'password']);
+            $input = $request->only(['nombres', 'apellidos', 'carnet', 'direccion', 'celular', 'email', 'fecha_nacimiento', 'tipo_usuario']);
+            $input['password'] = Hash::make($input['carnet']);
             $role = Role::findOrFail($request->input('role'));
-            $input['status'] = $status;
             $user  = User::create($input);
             $user->assignRole($role->name);
 
@@ -110,6 +108,33 @@ class UsuarioController extends Controller
                 'data'    => $user,
                 'msg'     => __('messages.add_success'),
             ];
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->errorInfo[0] == '23000') {
+                $mensaje = $e->errorInfo[2];
+
+                if (str_contains($mensaje, 'carnet')) {
+                    $msg = 'El carnet ingresado ya está registrado.';
+                } elseif (str_contains($mensaje, 'email')) {
+                    $msg = 'El email ingresado ya está registrado.';
+                } else {
+                    $msg = __('messages.something_went_wrong');
+                }
+
+                $output = [
+                    'success' => false,
+                    'msg'     => $msg,
+                ];
+            } else {
+                Log::emergency(__('messages.error_log'), [
+                    'Archivo' => $e->getFile(),
+                    'Línea'   => $e->getLine(),
+                    'Mensaje' => $e->getMessage(),
+                ]);
+                $output = [
+                    'success' => false,
+                    'msg'     => __('messages.something_went_wrong'),
+                ];
+            }
         } catch (\Exception $e) {
             Log::emergency(__('messages.error_log'), [
                 'Archivo' => $e->getFile(),
@@ -147,7 +172,8 @@ class UsuarioController extends Controller
         if (request()->ajax()) {
             $user = User::find($id);
             $roles = $this->util->getRoleData();
-            return view('usuarios/edit', compact('user', 'roles'));
+            $typeUsers = UtilHelper::getTypeUsers();
+            return view('usuarios/edit', compact('user', 'roles', 'typeUsers'));
         }
     }
 
@@ -162,15 +188,18 @@ class UsuarioController extends Controller
 
         if (request()->ajax()) {
             try {
-                $input = $request->only(['user_name', 'per_id', 'password']);
+                $input = $request->only(['nombres', 'apellidos', 'carnet', 'direccion', 'celular', 'email', 'fecha_nacimiento', 'tipo_usuario']);
 
                 $user = User::findOrFail($id);
-                $user->user_name = $input['user_name'];
-                $user->per_id = $input['per_id'];
-                if (!empty($input['password'])) {
-                    $user->password = Hash::make($input['password']);
-                }
-                $user->status = $request->has('status') ? 1 : 0;
+                $user->nombres = $input['nombres'];
+                $user->apellidos = $input['apellidos'];
+                $user->carnet = $input['carnet'];
+                $user->direccion = $input['direccion'];
+                $user->celular = $input['celular'];
+                $user->email = $input['email'];
+                $user->fecha_nacimiento = $input['fecha_nacimiento'];
+                $user->tipo_usuario = $input['tipo_usuario'];
+                $user->password = Hash::make($input['carnet']);
                 DB::beginTransaction();
                 $user->update();
                 $role_id = $request->input('role');
@@ -253,19 +282,13 @@ class UsuarioController extends Controller
         $term = $request->input('term');
         $page = $request->input('page', 1);
 
-        $users = User::where('status', 1)->leftJoin('persona', 'users.per_id', '=', 'persona.per_id')
+        $users = User::where('status', 1)
             ->where(function ($query) use ($term) {
-                $query->where('users.user_name', 'like', '%' . $term . '%')
-                    ->orWhere('persona.nombres', 'like', '%' . $term . '%')
-                    ->orWhere('persona.apellidopat', 'like', '%' . $term . '%')
-                    ->orWhere('persona.apellidomat', 'like', '%' . $term . '%');
+                $query->where('nombres', 'LIKE', '%' . $term . '%')
+                    ->orWhere('apellidos', 'LIKE', '%' . $term . '%')
+                    ->orWhere('carnet', 'LIKE', '%' . $term . '%');
             })
-            ->select(
-                'users.*',
-                'persona.nombres as persona_nombre',
-                'persona.apellidopat as persona_apellidopat',
-                'persona.apellidomat as persona_apellidomat'
-            );
+            ->orderBy('apellidos', 'asc');
 
         return $users->paginate(5, ['*'], 'page', $page);
     }

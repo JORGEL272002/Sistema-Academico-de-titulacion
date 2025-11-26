@@ -20,8 +20,7 @@ class SetSessionData
             $user = Auth::user();
             $session_data = [
                 'user_id' => $user->id,
-                'user_name' => $user->user_name,
-                'user_names' => $user->persona->per_nombres,
+                'user_names' => $user->nombres,
             ];
 
             $request->session()->put('user', $session_data);

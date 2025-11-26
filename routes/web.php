@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\PlantelAdministrativoController;
 use App\Http\Controllers\ProgramaAcademicoController;
@@ -38,10 +37,6 @@ Route::middleware(['atlantis_menu', 'set_session_data', 'check_user_login', 'aut
         Route::resource('roles', RoleController::class);
         Route::post('get-roles', [RoleController::class, 'getRoleData']);
         Route::post('get-routes', [RoleController::class, 'getRoutes']);
-
-        //Personas
-        Route::resource('personas', PersonaController::class);
-        Route::get('get-personas', [PersonaController::class, 'getPeopleData']);
 
         //Usuarios
         Route::resource('usuarios', UsuarioController::class);

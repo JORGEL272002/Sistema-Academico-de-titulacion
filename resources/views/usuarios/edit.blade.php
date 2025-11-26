@@ -24,11 +24,30 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group form-group-default required">
-                            <label>Persona</label>
-                            <select class="form-control" name="per_id" id="per_id">
-                                <option value="{{ $user->persona->id }}">{{ $user->persona->nombres }}
-                                    {{ $user->persona->apellidopat }} {{ $user->persona->apellidomat }}</option>
-                            </select>
+                            <label>C.I</label>
+                            <input name="carnet" type="text" class="form-control input-number"
+                                placeholder="Ingrese cédula de identidad" value="{{ $user->carnet }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default required">
+                            <label>Nombres</label>
+                            <input name="nombres" type="text" class="form-control" placeholder="Ingrese nombres"
+                                value="{{ $user->nombres }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default required">
+                            <label>Apellidos</label>
+                            <input name="apellidos" type="text" class="form-control" placeholder="Ingrese apellidos"
+                                value="{{ $user->apellidos }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default required">
+                            <label>Correo</label>
+                            <input name="email" type="email" class="form-control" placeholder="Ingrese correo"
+                                value="{{ $user->email }}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -36,8 +55,9 @@
                             <label for="role">Permiso</label>
                             <select class="form-control" name="role" class="form-control">
                                 @foreach ($roles as $key => $role)
-                                    <option value="{{ $key }}" {{ $key === $user->roles->first()->id ? 'selected' : '' }}>
-                                      {{ $role}}
+                                    <option value="{{ $key }}"
+                                        {{ $key === $user->roles->first()->id ? 'selected' : '' }}>
+                                        {{ $role }}
                                     </option>
                                 @endforeach
                             </select>
@@ -46,24 +66,36 @@
 
                     <div class="col-md-6">
                         <div class="form-group form-group-default required">
-                            <label>Nombre de Usuario</label>
-                            <input name="user_name" type="text" class="form-control" placeholder="Ingrese usuario"
-                                value="{{ $user->user_name }}">
+                            <label for="tipo_usuario">Tipo de Usuario</label>
+                            <select class="form-control" name="tipo_usuario" id="tipo_usuario" style="width: 100%">
+                                @foreach ($typeUsers as $key => $typeUser)
+                                    <option value="{{ $key }}"
+                                        {{ $key === $user->tipo_usuario ? 'selected' : '' }}>
+                                        {{ $typeUser }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-default">
-                            <label>Contraseña</label>
-                            <input type="text" class="form-control" placeholder="********" name="password">
+                            <label>Telefono</label>
+                            <input name="celular" type="text" class="form-control input-number"
+                                placeholder="Ingrese celular" value="{{ $user->celular }}">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" {{ $user->status ? 'checked' : '' }}
-                                    name="status">
-                                <span class="form-check-sign">Habilitado</span>
-                            </label>
+                        <div class="form-group form-group-default">
+                            <label>Fecha de nacimiento</label>
+                            <input name="fecha_nacimiento" type="date" class="form-control"
+                                value="{{ $user->fecha_nacimiento }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default">
+                            <label>Dirección</label>
+                            <input name="direccion" type="text" class="form-control" placeholder="Ingrese dirección"
+                                value="{{ $user->direccion }}">
                         </div>
                     </div>
                 </div>

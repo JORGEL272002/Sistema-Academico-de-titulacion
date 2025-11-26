@@ -16,7 +16,7 @@ class Superadmin
     public function handle(Request $request, Closure $next): Response
     {
         $superadmin_list = config('constants.superadmin_usernames');
-        if (!empty($request->user()) && in_array(strtolower($request->user()->user_name), explode(',', strtolower($superadmin_list)))) {
+        if (!empty($request->user()) && in_array(strtolower($request->user()->tipo_usuario), explode(',', strtolower($superadmin_list)))) {
             return $next($request);
         } else {
             abort(403, 'Unauthorized action.');

@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Docente;
-use App\Models\Estudiante;
-use App\Models\PlantelAdministrativo;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 
@@ -51,10 +47,7 @@ class HomeController extends Controller
 
         $greeting .= ". Feliz {$dayOfWeek}, {$message} !";
 
-        $activeStudents = Estudiante::where('estado', 1)->count();
-        $activeUsers = User::where('status', 1)->count();
-        $activeTeachers = Docente::where('estado', 1)->count();
-        $activeAdministrative = PlantelAdministrativo::where('estado', 1)->count();
-        return view('home.index', compact('greeting', 'activeStudents', 'activeUsers', 'activeTeachers','activeAdministrative'));
+        $activeUsers = User::count();
+        return view('home.index', compact('greeting', 'activeUsers'));
     }
 }

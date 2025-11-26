@@ -20,20 +20,8 @@
                         <div class="card-category">Información diaria de actividad en el sistema</div>
                         <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
                             <div class="px-2 pb-2 pb-md-0 text-center">
-                                <div id="studentsCount"></div>
-                                <h6 class="fw-bold mt-3 mb-0">Alumnos Activos</h6>
-                            </div>
-                            <div class="px-2 pb-2 pb-md-0 text-center">
-                                <div id="teachersCount"></div>
-                                <h6 class="fw-bold mt-3 mb-0">Docentes Activos</h6>
-                            </div>
-                            <div class="px-2 pb-2 pb-md-0 text-center">
-                                <div id="administrativeCount"></div>
-                                <h6 class="fw-bold mt-3 mb-0">Administrativos Activos</h6>
-                            </div>
-                            <div class="px-2 pb-2 pb-md-0 text-center">
                                 <div id="usersCount"></div>
-                                <h6 class="fw-bold mt-3 mb-0">Usuarios Activos</h6>
+                                <h6 class="fw-bold mt-3 mb-0">Usuarios</h6>
                             </div>
                         </div>
                     </div>
@@ -41,14 +29,38 @@
             </div>
 
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Grafica Barras</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Grafica Torta</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="pieChart" style="width: 50%; height: 50%"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @push('scripts')
     <script>
-        const activeStudents = {{ $activeStudents }};
-        const activeTeachers = {{ $activeTeachers }};
-        const activeAdministrative = {{ $activeAdministrative }};
         const activeUsers = {{ $activeUsers }};
     </script>
     <script src="{{ asset('js/app/home.js') }}"></script>

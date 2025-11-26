@@ -100,7 +100,7 @@ php artisan serve
 
 ### Credenciales de Login
 
-- **Usuario:** `admin`
+- **Correo:** `admin@gmail.com`
 - **Contraseña:** `123456`
 
 ### URL de la Aplicación

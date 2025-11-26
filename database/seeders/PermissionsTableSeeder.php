@@ -34,19 +34,11 @@ class PermissionsTableSeeder extends Seeder
             // ==== PLANTEL ADMINISTRATIVO ====
             'plantel_administrativo' => [
                 'plantel_administrativo.index',
-                'plantel_administrativo.view',
-                'plantel_administrativo.create',
-                'plantel_administrativo.update',
-                'plantel_administrativo.delete',
             ],
 
             // ==== DOCENTES ====
             'docentes' => [
                 'docente.index',
-                'docente.view',
-                'docente.create',
-                'docente.update',
-                'docente.delete',
             ],
 
             // ==== PROGRAMA ACADÉMICO ====
@@ -61,10 +53,6 @@ class PermissionsTableSeeder extends Seeder
             // ==== ESTUDIANTE ====
             'estudiante' => [
                 'estudiante.index',
-                'estudiante.view',
-                'estudiante.create',
-                'estudiante.update',
-                'estudiante.delete',
             ],
 
             // ==== PROYECTO ====
